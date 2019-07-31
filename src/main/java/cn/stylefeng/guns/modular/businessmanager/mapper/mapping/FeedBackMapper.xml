@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.businessmanager.mapper.FeedBackMapper">
+
+	<!-- 通用查询映射结果 -->
+    <resultMap id="FeedBackMap" type="cn.stylefeng.guns.modular.businessmanager.entity.FeedBack">
+        <id column="recordid" property="recordid"/>
+        <result column="account" property="account"/>
+        <result column="qqorwxnum" property="qqorwxnum"/>
+        <result column="phonenum" property="phonenum"/>
+        <result column="nickname" property="nickname"/>
+        <result column="fbcontent" property="fbcontent"/>
+        <result column="respcontent" property="respcontent"/>
+        <result column="fbtime" property="fbtime"/>
+        <result column="resptime" property="resptime"/>
+        <result column="respondent" property="respondent"/>
+        <result column="fbpicture" property="fbpicture"/>
+        <result column="respstate" property="respstate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+		    RECORDID as recordid, ACCOUNT as account, QQORWXNUM as qqorwxnum,
+		    PHONENUM as phonenum, NICKNAME as nickname, FBCONTENT as fbcontent,
+		    RESPCONTENT as respcontent, FBTIME as fbtime, RESPTIME as resptime,
+		    RESPONDENT as respondent, FBPICTURE as fbpicture, RESPSTATE as respstate 
+    	
+    </sql>
+
+	<!-- 查询所有选项 -->
+	<select id="selectFeedBack" resultType="map">
+		select 
+		<include refid="Base_Column_List"/>
+		from FEEDBACK where 1=1
+		<if test="fbcontent!=null and fbcontent!= '' ">
+			and fbcontent like '%'||#{fbcontent}||'%'	
+		</if>
+		<if test="qqorwxnum!=null and qqorwxnum!= '' ">
+			and qqorwxnum = #{qqorwxnum}	
+		</if>
+		<if test="nickname!=null and nickname!= '' ">
+			and nickname = #{nickname}	
+		</if>
+		<if test="respcontent!=null and respcontent!= '' ">
+			and respcontent = #{respcontent}	
+		</if>
+		<if test="respstate!=null and respstate!= '' ">
+			and respstate = #{respstate}	
+		</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,19 @@
+spring:
+  datasource:
+        dataSourceName: dataSourceGuns
+        driverClassName:  com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://10.137.35.1:3307/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+        username: root
+        password: root
+
+guns: 
+   muti-datasource: 
+     open:  true
+     dataConnectionPropertiesList:  
+       - dataSourceName: dataSourceBiz 
+         url:  jdbc:oracle:thin:@//10.137.35.154:1521/orcl 
+         username: eservice
+         password: cjis
+         driverClassName:   oracle.jdbc.driver.OracleDriver
+         validationQuery: SELECT 'x' FROM DUAL
+     

@@ -1,0 +1,57 @@
+@layout("/common/_container.html",{js:["/assets/modular/businessmanager/feedback/feedback.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">意见反馈</span>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form toolbar">
+                        <div class="layui-form-item">
+                        	 反馈内容：
+                            <div class="layui-inline">
+                               <input id="fbcontent" class="layui-input" type="text" placeholder="反馈内容"/>
+                            </div>
+                                                                       客户QQ/微信：
+                            <div class="layui-inline">
+                                <input id="qqorwxnum" class="layui-input" type="text" placeholder="客户QQ/微信"/>
+                            </div>
+                                                                     客户昵称：
+                            <div class="layui-inline">
+                                <input id="nickname" class="layui-input" type="text" placeholder="客户昵称"/>
+                            </div>
+                         
+                        </div>
+                        <div class="layui-form-item">
+                        	回复人：
+                        	<div class="layui-inline">
+                                <input id="respcontent" class="layui-input" type="text" placeholder="回复人"/>
+                            </div>
+                           	 回复状态：
+                           <div class="layui-inline">
+                                <select id="respstate">
+                                    <option value="">全部</option>
+                                    <option value="1">已回复</option>
+                                    <option value="0">未回复</option>
+                                </select>
+                            </div>
+                            <div class="layui-inline">
+                                <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+<!--                             	<button id="btnClean" class="layui-btn icon-btn layui-btn-danger"><i class="layui-icon">&#xe67d;</i>清空</button>
+ -->                            	
+                            </div>
+                        </div>
+                    </div>
+                    <table class="layui-table" id="feedbackTable" lay-filter="feedbackTable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tableBar">
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="detail">回复</a>
+</script>
+@}
